@@ -1,0 +1,325 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.fondo {
+    background-image: url("../imgs/Fondo.png");
+    background-size: cover;     
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed; 
+    min-height: calc(100vh - 100px);
+    border-radius: 0px 0px 30px 30px
+}
+
+header {
+    height: 65px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.logo-header {
+    width: 70px;
+}
+
+.nombre {
+    font-family: "Quattrocento", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 26px;
+    margin-left: 10px;
+}
+
+.encabezado {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.iniciar {
+    font-family: "Comme", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 14px;
+}
+
+.header-iniciar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.linea-vertical {
+    width: 2px;           
+    height: 30px;        
+    background-color: #E3ADBB; 
+}
+
+.perfil {
+    width: 35px;
+}
+
+.mensaje {
+    width: 500px;
+    height: 400px;
+    padding: 100px;
+}
+
+.sesion-box {
+    width: 400px;
+    height: 500px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.cuenta-box {
+    width: 400px;
+    height: 600px;
+    margin-top: 5px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.sesion-text {
+    font-family: "Quattrocento", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.icn-perfil-sesion {
+    width: 80px;
+}
+
+.form-formato {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+}
+
+.icn-form {
+    width: 35px;
+}
+
+input[type='text'], input[type="email"], input[type='password'], input:focus{
+    width: 280px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #E4C3CB;
+    outline: none;
+}
+
+input::placeholder {
+    color: #9D9D9D;
+}
+
+.boton-ingresar {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 16px;
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 50%;
+    outline: solid 1px #E3ADBB;
+    color: #E3ADBB;
+}
+
+.boton-ingresar:hover {
+    background-color: #E4C3CB;
+    color: white;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #f0d8ac; 
+    margin: 20px 0;
+}
+
+.sesion-opcion {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 15px;
+    color: #9D9D9D;
+    text-align: center;
+}
+
+.sesion-opcion:hover {
+    color: #E3ADBB;
+}
+
+.welcome {
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 36px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+
+.slogan {
+    font-family: "Quattrocento", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    margin-left: 10px;
+    line-height: 47px;
+}
+
+.slogan-sub {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 22px;
+    margin-left: 10px;
+    color: #9D9D9D;
+    line-height: 32px;
+}
+
+.boton-cuenta {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 16px;
+    background-color: #E4C3CB;
+    height: 40px;
+    width: 200px;
+    border-radius: 20px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.text-boton {
+    color: white;
+}
+
+
+footer {
+    height: 100px;
+}
+
+.pie {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 30px;
+    margin-top: 10px;
+}
+
+.logo-pie {
+    width: 80px;
+}
+
+.nombre.autor {
+    display: flex;
+    flex-direction: column;
+}
+
+.nombre-pie {
+    font-family: "Quattrocento", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
+}
+
+.derechos {
+    font-family: "Quattrocento", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    color: #9D9D9D;
+}
+
+.pie-derecha {
+    display: flex;
+    gap: 40px;
+    margin-left: auto;
+    align-items: flex-start;
+}
+
+
+.informacion {
+    display: flex;
+    flex-direction: column;
+    margin-top: 13px;
+}
+
+.titulo-pie {
+    font-family: "Quattrocento", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.sub-pie {
+    font-family: "Quattrocento", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    margin-bottom: 3px;
+    margin-top: 2px;
+    color: #9D9D9D;
+}
+
+.contacto {
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 13px;
+}
+
+.redes {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
