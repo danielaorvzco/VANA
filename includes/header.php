@@ -1,3 +1,19 @@
+<?php 
+    // Verificar que haya un sesión abierta
+    if(!isset($_SESSION['usuario_id'])){
+        header ("Location: ../index.html");
+        exit();
+    }
+
+    // Consultar rol del usuario para mostrar funciones permitidas según el tipo de rol
+    $rol = $_SESSION['rol_id'];
+    if($rol == 1){
+        $rol = "Administrador";
+    } else {
+        $rol = "Estudiante";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,11 +40,17 @@
             <div class="header-opciones">
                 <a href="../home/habitoindex.php"><article class="opciones">Mis hábitos</article></a>
                 <a href="../home/progreindex.php"><article class="opciones">Mi progreso</article></a>
+                <?php 
+                    // Mostrar CRUD en en menú si el usuario es Administrador 
+                    if ($rol == 'Administrador') {
+                        echo "<a href='../home/index.php'><article class='opciones'>Crud</article></a>";
+                    } 
+                ?>
             </div>
             <div class="header-usuario">
                 <article class="usuario-nombre"><?=$_SESSION['nombre_completo'];?></article>
                 <div class="linea-vertical"></div>
-                <a href=""><img src="../includes/assets/imgs/profile.svg" alt="icono-perfil" class="perfil"></a>
+                <a href="../home/perfilindex.php"><img src="../includes/assets/imgs/profile.svg" alt="icono-perfil" class="perfil"></a>
             </div>
         </div>
     </header>

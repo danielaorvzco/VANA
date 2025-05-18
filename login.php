@@ -1,4 +1,6 @@
-<?php include 'includes/headerlogins.php'; ?>
+<?php 
+    include 'includes/headerlogins.php'; 
+?>
 
     <main>
         <div class="sesion-box">
@@ -14,8 +16,16 @@
                     <input type="password" name="password" id="password" placeholder="Contraseña" require>
                 </div>
                 <a href="" class="form-formato">
-                    <input type="submit" value="Iniciar sesión" class="boton-ingresar">
+                    <input type="submit" value="Iniciar sesión" class="boton-ingresar rosa">
                 </a>
+                <?php
+                    // Impresión de errores
+                    if (isset($_GET['error'])){
+                        echo "<a href='' class='form-formato'>
+                                <input value='Usuario o contraseña incorrecta' class='btn-error' disabled>
+                            </a>";
+                    }
+                ?>
             </form>
         </div>
     </main>

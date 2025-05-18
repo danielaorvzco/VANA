@@ -1,23 +1,14 @@
 <?php 
     session_start();
     
+    // Redirigir al Index
     if(!isset($_SESSION['usuario_id'])){
         header ("Location: ../index.html");
         exit();
     }
 
-    $rol = $_SESSION['rol_id'];
-    if($rol == 1){
-        $rol = "Administrador";
-    } else if ($rol == 2){
-        $rol = "Estudiante";
-    } else if ($rol == 3){
-        $rol = "Profesor";
-    } else {
-        $rol = "Invitado";
-    }
-
     include '../includes/header.php';
+    // Archivo que consulta todos los hábitos del usuario
     include 'habitos/habitos_usuario.php';
 ?>
     <main>
@@ -32,9 +23,10 @@
                 <div class="estacion-click">
                     <article class="estacion">lo favorito de lo favorito</article>
                     <div class="list-hobbies">
-                        <?php foreach ($habitos as $habito): ?>
+                        <?php foreach ($habitos as $habito): // Imprimir TODOS los hábitos del usuario?>
                         <div class="list-hobbiess <?= $habito['estado'] === 'completo' ? 'hbt-completado' : '' ?>">
                             <img src="../includes/assets/imgs/heart.svg" alt="icono-corazon" class="icn-hobbie">
+                            <!-- FORM para envíar el ID del hábito a eliminar -->
                             <form action="habitos/eliminar_habito.php" method="POST" style="display:inline;">
                                 <input type="hidden" name="habito_id" value="<?= $habito['id'] ?>">
                                 <button type="submit" class="icn-delete" onclick="return confirm('¿Estás seguro de que deseas eliminar este hábito?')">
@@ -42,16 +34,14 @@
                                 </button>
                             </form>
                             <?php if ($habito['estado'] === 'completo'): ?>
-                                <img src="../includes/assets/imgs/edit.svg" alt="editar-icono" class="icn-opcion" style="opacity: 0.4; cursor: not-allowed;" title="No editable">
+                                <img src="../includes/assets/imgs/edit.svg" alt="editar-icono" class="icn-opcion sub" title="No editable">
                             <?php else: ?>
+                                <!-- Envíar id del hábito a la página de edición -->
                                 <a href="editar-habito.php?id=<?= $habito['id'] ?>">
                                     <img src="../includes/assets/imgs/edit.svg" alt="editar-icono" class="icn-opcion">
                                 </a>
                             <?php endif; ?>
-                            <form action="habitos/estado_habito.php" method="POST"  style="display:inline;">
-                                <input type="hidden" name="id" value="<?= $habito['id'] ?>">
-                                <input type="checkbox" name="completo" onchange="this.form.submit()" <?= $habito['estado'] === 'completo' ? 'checked' : '' ?>>
-                            </form>
+                            <!-- Impresión de los datos del hábito -->
                             <article class="hobbie"><?= htmlspecialchars($habito['nombre']) ?> -</article>
                             <article class="descripcion"><?= htmlspecialchars($habito['descripcion']) ?> -</article>
                             <article class="otro-hobbie"><?= ucfirst($habito['frecuencia']) ?> -</article>
@@ -106,6 +96,12 @@
                             <input type="number" name="meta" id="meta">
                             <article class="hb-help">Veces que quieres cumplir esta hábito según la frecuencia</article>
                         </div>
+                        <?php
+                            if (isset($_GET['error'])){
+                                // Impresión de errores
+                                echo "<article class='hb-help red'>Campos obligatorios vacios</article>";
+                            }
+                        ?>
                         <br>
                         <button class="btn-habitos-rg">¡Listo!</button>
                     </form>
@@ -116,7 +112,7 @@
                         <article class="bienvenido">Pero...</article>
                         <article class="bnv-italic">quieres más?</article>
                     </div>
-                    <img src="../includes/assets/imgs/personaje5" alt="personaje-5" class="personaje3">
+                    <img src="../includes/assets/imgs/personaje5.png" alt="personaje-5" class="personaje3">
                 </div>
             </div>
         </div>

@@ -1,33 +1,55 @@
 <?php
-session_start();
-require '../../includes/conexion.php';
+    // Iniciar sesión
+    session_start();
 
-if (!isset($_POST['habito_id'], $_POST['campo'], $_POST['valor'])) {
-    die("Datos incompletos.");
-}
+    // Redirigir a Index
+    if (!isset($_SESSION['usuario_id'])) {
+        header("Location: ../index.html");
+        exit();
+    }
 
-$habito_id = $_POST['habito_id'];
-$campo = $_POST['campo'];
-$valor = $_POST['valor'];
+    // Control de errores
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
 
-// Lista blanca de campos editables
-$campos_validos = ['nombre', 'descripcion', 'frecuencia', 'meta', 'fecha_creacion', 'estado'];
+    try {
+        require_once ('../../includes/conexion.php');
 
-if (!in_array($campo, $campos_validos)) {
-    die("Campo no válido.");
-}
+        // Verificar que los campos necesitados noo esten vacios
+        if (!isset($_POST['habito_id'], $_POST['campo'], $_POST['valor'])) {
+            die("Datos incompletos.");
+        }
 
-try {
-    $sql = "UPDATE habito SET $campo = :valor WHERE id = :habito_id AND usuario_id = :usuario_id";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute([
-        ':valor' => $valor,
-        ':habito_id' => $habito_id,
-        ':usuario_id' => $_SESSION['usuario_id']
-    ]);
+        // Guardar datos en variables
+        $habito_id = $_POST['habito_id'];
+        $campo = $_POST['campo'];
+        $valor = $_POST['valor'];
 
-    header('Location: ../habitoindex.php'); // redirige después de actualizar
-    exit;
-} catch (PDOException $e) {
-    die("Error al actualizar: " . $e->getMessage());
-}
+
+        // Indicar los 'campo (opciones del SELECT)' aceptables
+        $campos_validos = ['nombre', 'descripcion', 'frecuencia', 'meta', 'fecha_creacion', 'estado'];
+
+        // Si el campo que llego desde el SELECT no coincide con alguno de los campos aceptables, no se hace el UPDATE
+        if (!in_array($campo, $campos_validos)) {
+            die("Campo no válido.");
+        }
+
+        try {
+            // Preparar y ejecutar UPDATE
+            $sql = "UPDATE habito SET $campo = :valor WHERE id = :habito_id AND usuario_id = :usuario_id";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([
+                ':valor' => $valor,
+                ':habito_id' => $habito_id,
+                ':usuario_id' => $_SESSION['usuario_id']
+        ]);
+
+        header('Location: ../habitoindex.php');
+        exit;
+        } catch (PDOException $e) {
+            die("Error al actualizar: " . $e->getMessage());
+        }
+    } catch (PDOException $e) {
+        die ("Error PDO: " . $e->getMessage());
+    }
+?>

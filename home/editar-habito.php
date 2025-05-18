@@ -1,25 +1,15 @@
 <?php 
     session_start();
     
+    // Redirigir al Index
     if(!isset($_SESSION['usuario_id'])){
         header ("Location: ../index.html");
         exit();
     }
 
-    $rol = $_SESSION['rol_id'];
-    if($rol == 1){
-        $rol = "Administrador";
-    } else if ($rol == 2){
-        $rol = "Estudiante";
-    } else if ($rol == 3){
-        $rol = "Profesor";
-    } else {
-        $rol = "Invitado";
-    }
-
     include '../includes/header.php';
-    include 'habitos/habitos_usuario.php';
 
+    // Verficar que se recibe el ID del hábito a editar
     $id = $_GET['id'] ?? null;
     if (!$id) {
         echo "<p>Error: ID de hábito no proporcionado.</p>";
@@ -33,13 +23,13 @@
         </div>
         <article class="msg-siempre">Siempre es bueno reevaluar nuestras decisiones</article>
         <div class="Form-cuerpo">
-            <img src="../includes/assets/imgs/personaje5.png" alt="personaje5-vana">
+            <img src="../includes/assets/imgs/personaje5.png" alt="personaje5-vana" class="personajeidk">
             <div class="Formulario-editar">
                 <form action="habitos/editar_habito.php" method="POST">
                     <input type="hidden" name="habito_id" value="<?= htmlspecialchars($id) ?>">
-
                     <article class="select-text">Editemos este hábito</article>
                     <div class="select-edit">
+                        <!-- Seleccionar el campo a editar -> se habilita el input -->
                         <article class="select-text">Selecciona el campo que quieres editar</article>
                         <select name="campo" id="campo" onchange="habilitarCampo()">
                             <option value="">--Selecciona--</option>
@@ -48,6 +38,7 @@
                             <option value="frecuencia">Frecuencia</option>
                             <option value="meta">Meta</option>
                             <option value="fecha_creacion">Fecha de creación</option>
+                            <option value="estado">Estado de completación</option>
                         </select>
                     </div>
 
@@ -81,9 +72,17 @@
                                 <article class="label-form">Fecha de creación</article>
                                 <input type="date" name="valor" id="input-fecha_creacion" disabled>
                             </div>
+                            <div class="campo-edit">
+                                <article class="label-form">Estado</article>
+                                <select name="valor" id="input-estado" disabled>
+                                    <option value="incompleto">Incompleto</option>
+                                    <option value="completo">Completo</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <br>
+                    <!-- Mandar nuevo valor al archivo UPDATE -->
                     <button type="submit" class="btn-habitos-rg">Actualizar</button>
                 </form>
             </div>
@@ -94,8 +93,9 @@
 </main>
 
     <script>
+        // Función para habilitar input valor mandado por el SELECT
         function habilitarCampo() {
-            const campos = ["nombre", "descripcion", "frecuencia", "meta", "fecha_creacion"];
+            const campos = ["nombre", "descripcion", "frecuencia", "meta", "fecha_creacion", "estado"];
             const seleccionado = document.getElementById("campo").value;
 
             campos.forEach(campo => {

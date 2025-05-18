@@ -57,13 +57,6 @@ CREATE TABLE reporte_semanal (
     FOREIGN KEY (usuario_id) REFERENCES usuario (id)
 ) ENGINE = InnoDB;
 
-INSERT INTO historial_habito (fecha, checkk, habito_id) VALUES ('2025/05/11', 1, 2);
-
-INSERT INTO historial_habito (fecha, checkk, habito_id) VALUES ('2025/05/11', 1, 8);
-
-INSERT INTO reporte_semanal (semana_inicio, semana_fin, total_habitos, habitos_checkk, Usuario_id)
-VALUES ('2025/05/05', '2025/05/11', 2, 2, 2);
-
 INSERT INTO estatus (descripcion) VALUES
 ('Activo'),
 ('Eliminado');
@@ -96,5 +89,5 @@ values ('Pilates', 'Programa intensivo', 'trimestrual', 9, 2);
 insert into habito (nombre, descripcion, frecuencia, meta, estado, usuario_id)
 values ('Correr', 'Prep.Maraton', 'trimestrual', 9, 'completo', 2);
 
-insert into historial_habito (fecha, checkk, habito_id)
-values ('2025-05-15', 1, 6);
+INSERT INTO reporte_semanal (semana_inicio, semana_fin, total_habitos, habitos_checkk, Usuario_id)
+VALUES ('2025/05/05', '2025/05/11', 2, 2, 2);

@@ -9,7 +9,7 @@ html, body {
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed; 
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 30px);
     border-radius: 0px 0px 30px 30px
 }
 
@@ -95,7 +95,7 @@ a {
 
 .cuenta-box {
     width: 400px;
-    height: 600px;
+    height: 650px;
     margin-top: 5px;
     background-color: #ffffff;
     margin: 0 auto;
@@ -157,13 +157,36 @@ input::placeholder {
     padding: 10px;
     cursor: pointer;
     border-radius: 5px;
-    width: 50%;
+    width: 80%;
+    text-align: center;
     outline: solid 1px #E3ADBB;
     color: #E3ADBB;
 }
 
+.btn-error {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 16px;
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 80%;
+    text-align: center;
+    outline: solid 1px #f0d8ac;
+    color: #f0d8ac;
+}
+
 .boton-ingresar:hover {
     background-color: #E4C3CB;
+    color: white;
+}
+
+.boton-error:hover {
+    background-color: #f0d8ac;
     color: white;
 }
 
@@ -322,4 +345,8 @@ footer {
     display: flex;
     flex-direction: row;
     gap: 10px;
+}
+
+.error {
+    color: crimson;
 }

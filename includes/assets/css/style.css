@@ -3,6 +3,12 @@ html, body {
     padding: 0;
 }
 
+/* *,
+*::before,
+*::after {
+    box-sizing: border-box;
+} */
+
 
 header {
     height: 65px;
@@ -38,6 +44,11 @@ header {
 a {
     text-decoration: none;
     color: black;
+}
+
+.sub {
+    opacity: 0.4; 
+    cursor: not-allowed;
 }
 
 .opciones {
@@ -191,7 +202,7 @@ a {
     margin-left: 10px;
     display: flex;
     align-items: center;
-    gap: 50px;
+    /* gap: 50px;  */
 } 
 
 .msg-moti {
@@ -308,7 +319,7 @@ a {
     height: 40px;
 }
 
-input[type='text'], input[type='number'], input[type='date'], input:focus, select{
+input[type='text'], input[type='number'], input[type='date'], input[type='email'], input[type='password'], input:focus, select{
     width: 400px;
     padding: 10px;
     border: none;
@@ -771,4 +782,136 @@ footer {
 
 .italic {
     font-style: italic;
+}
+
+.bienvenido-crud {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 28px;
+    color: #89BEA5;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.icn-smile {
+    width: 60px;
+}
+
+.icn-delete-crud {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+.icn-opcion-crud {
+    width: 25px;
+}
+
+.list-usuarios {
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+}
+
+.perfil-bienvenido {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 30px;
+    gap: 10px;
+}
+
+.icn-tag {
+    width: 90px;
+}
+
+.bien-perfil {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 32px;
+    color: #89BEA5;
+}
+
+.bienvenido-perfil {
+    font-family: "Quattrocento", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 32px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.btns-perfil {
+    gap: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-perfil-pink {
+    background-color: #E3ADBB;
+    border-color: #E3ADBB;
+    color: white;
+    border-radius: 20px;
+    width: 130px;
+    height: 40px;
+}
+
+.btn-perfil-blue {
+    background-color: #B3DBF8;
+    border-color: #B3DBF8;
+    color: white;
+    border-radius: 20px;
+    width: 130px;
+    height: 40px;
+}
+
+.select-perfil {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 24px;
+    color: #B3DBF8;
+}
+
+.form-perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.campo-perfil {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.icn-actualizar {
+    width: 40px;
+}
+
+.red {
+    color: crimson;
+}
+
+.icn-personajeGlass {
+    width: 300px;
+}
+
+.personajeidk {
+    width: 22%;
 }

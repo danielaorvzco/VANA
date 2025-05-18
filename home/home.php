@@ -1,20 +1,10 @@
 <?php 
     session_start();
     
+    // Redirigir a Index
     if(!isset($_SESSION['usuario_id'])){
         header ("Location: ../index.html");
         exit();
-    }
-
-    $rol = $_SESSION['rol_id'];
-    if($rol == 1){
-        $rol = "Administrador";
-    } else if ($rol == 2){
-        $rol = "Estudiante";
-    } else if ($rol == 3){
-        $rol = "Profesor";
-    } else {
-        $rol = "Invitado";
     }
 
     include '../includes/header.php';
@@ -40,6 +30,7 @@
                             <form action="habitos/completar_habito.php" method="POST" class="habitos-form">
                                 <div class='lista-habitos'>
                                     <?php
+                                    // Imprimir los hábitos INCOMPLETOS con frecuencia DIARIA
                                         foreach ($habitos as $habito) {
                                             if ($habito['frecuencia'] == 'diario') {
                                                 $isCompletado = $habito['completado'] ? true : false;
@@ -64,6 +55,7 @@
                             <form action="habitos/completar_habito.php" method="POST" class="habitos-form">
                                 <div class='lista-habitos'>
                                     <?php
+                                    // Imprimir los hábitos INCOMPLETOS con frecuencia SEMANAL
                                         foreach ($habitos as $habito) {
                                             if ($habito['frecuencia'] == 'semanal') {
                                                 $isCompletado = $habito['completado'] ? true : false;
@@ -88,6 +80,7 @@
                             <form action="habitos/completar_habito.php" method="POST" class="habitos-form">
                                 <div class='lista-habitos'>
                                     <?php
+                                    // Imprimir los hábitos INCOMPLETOS con frecuencia MENSUAL, BIMESTRAL O TRIMESTRUAL
                                         foreach ($habitos as $habito) {
                                             if (in_array($habito['frecuencia'], ['mensual', 'bimestral', 'trimestrual'])) {
                                                     $isCompletado = $habito['completado'] ? true : false;
@@ -118,11 +111,13 @@
     </main>
     
     <script>
+        // Cambiar el aspecto del hábito y checkbox si checkbox es seleccionado
         document.addEventListener('DOMContentLoaded', function () {
             document.querySelectorAll('.check-habito').forEach(checkbox => {
                 checkbox.addEventListener('change', function () {
                     if (this.checked) {
                         const id = this.getAttribute('data-id');
+                        // Archivo para hacer registro de la completación del hábito
                         fetch('habitos/completar_habito.php', {
                             method: 'POST',
                             headers: {
