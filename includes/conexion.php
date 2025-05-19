@@ -3,7 +3,7 @@
     $host = 'localhost';
     $dbname = 'vana';
     $usuario = 'root';
-    $clave = 'cati1235';
+    $clave = ''; // contraseña db
     
     try {
         $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $usuario, $clave);
